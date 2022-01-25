@@ -1,0 +1,89 @@
+var sum = 3;
+
+onEvent("startButton", "click", function( ) {
+  thingsA = randomNumber(20,50);
+  thingsB = randomNumber(20,50);
+  thingsC = randomNumber(20,50);
+  setText("inventoryA", thingsA);
+  setText("inventoryB", thingsB);
+  setText("inventoryC", thingsC);
+  sum = thingsA + thingsB + thingsC + thingsD;
+  setText("howManyNumber", sum);
+});
+
+inventory(thingsA);
+
+function inventory() {
+  add();
+  remove();
+  donuts();
+}
+
+function add() {
+  onEvent("addButtonA", "click", function( ) {
+    sum = sum + getNumber("numberInputA");
+    thingsA = thingsA + getNumber("numberInputA");
+    setText("howManyNumber", sum);
+    setText("inventoryA", thingsA);
+    console.log("You have " + thingsA + " of A, " + thingsB + " left of B, and " + thingsC + " left in inventory! You have " + sum + " left in total!");
+  });
+  onEvent("addButtonB", "click", function( ) {
+    sum = sum + getNumber("numberInputB");
+    thingsB= thingsB + getNumber("numberInputB");
+    setText("howManyNumber", sum);
+    setText("inventoryB", thingsB);
+    console.log("You have " + thingsA + " of A, " + thingsB + " left of B, and " + thingsC + " left in inventory! You have " + sum + " left in total!");
+  });
+  onEvent("addButtonC", "click", function( ) {
+    sum = sum + getNumber("numberInputC");
+    thingsC = thingsC + getNumber("numberInputC");
+    setText("howManyNumber", sum);
+    setText("inventoryC", thingsC);
+    console.log("You have " + thingsA + " of A, " + thingsB + " left of B, and " + thingsC + " left in inventory! You have " + sum + " left in total!");
+  });
+}
+
+function remove() {
+  onEvent("removeButtonA", "click", function( ) {
+    if (thingsA - getNumber("numberInputA") >= 0) {
+      sum = sum - getNumber("numberInputA");
+      thingsA = thingsA - getNumber("numberInputA");
+      setText("howManyNumber", sum);
+      setText("inventoryA", thingsA);
+      console.log("You have " + thingsA + " apples, " + thingsB + " bananas, " + thingsC + " carrots, and " + thingsD + " donuts left in inventory! You have " + sum + " food left in total!");
+    } else {
+      console.log("You don't have that many left in inventory A!");
+    }
+  });
+  onEvent("removeButtonB", "click", function( ) {
+    if (thingsB - getNumber("numberInputB") >= 0) {
+      sum = sum - getNumber("numberInputB");
+      thingsB = thingsB - getNumber("numberInputB");
+      setText("howManyNumber", sum);
+      setText("inventoryB", thingsB);
+      console.log("You have " + thingsA + " apples, " + thingsB + " bananas, " + thingsC + " carrots, and " + thingsD + " donuts left in inventory! You have " + sum + " food left in total!");
+    } else {
+      console.log("You don't have that many left in inventory B!");
+    }
+  });
+  onEvent("removeButtonC", "click", function( ) {
+    if (thingsC - getNumber("numberInputC") >= 0) {
+      sum = sum - getNumber("numberInputC");
+      thingsC = thingsC - getNumber("numberInputC");
+      setText("howManyNumber", sum);
+      setText("inventoryC", thingsC);
+      console.log("You have " + thingsA + " apples, " + thingsB + " bananas, " + thingsC + " carrots, and " + thingsD + " donuts left in inventory! You have " + sum + " food left in total!");
+    } else {
+      console.log("You don't have that many left in inventory C!");
+    }
+  });
+}
+
+function donuts(){
+  onEvent("updateButton", "click", function( ) {
+    thingsD = getNumber("donutsInputNumber");
+    sum = thingsA + thingsB + thingsC + thingsD;
+    setText("howManyNumber", sum);
+    console.log("You have " + thingsA + " apples, " + thingsB + " bananas, " + thingsC + " carrots, and " + thingsD + " donuts left in inventory! You have " + sum + " food left in total!");
+  });
+}
